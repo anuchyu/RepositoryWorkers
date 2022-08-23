@@ -1,6 +1,6 @@
 ﻿using RepositoryWorkers;
 
-Repository repository = new ();
+RepositoryWorkers.RepositoryWorkers repository = new ();
 do
     {
         Console.WriteLine("Что будем делать? Введите цифру на экран\n1.Выведем на экран\n2.Выведем на экран сотрудника по ID\n" +
@@ -17,7 +17,7 @@ do
             int id;
             Console.WriteLine("Какое ID смотрим?");
             string line = Console.ReadLine();
-            while (int.TryParse(line, out id))
+            while (!int.TryParse(line, out id))
             {
                 Console.WriteLine("неверное число");
                 line = Console.ReadLine();
@@ -29,12 +29,12 @@ do
             int idDelete;
             Console.WriteLine("Какое ID удаляем?");
             line = Console.ReadLine();
-            while (int.TryParse(line, out idDelete))
+            while (!int.TryParse(line, out idDelete))
             {
                 Console.WriteLine("неверное число");
                 line = Console.ReadLine();
             }
-            repository.DeleteWorker(idDelete);
+            repository.DeleteWorkerById(idDelete);
                 break;
 
             case 4:
@@ -48,6 +48,5 @@ do
                 break;
         }
 
-
-    } while (true);
+    } while (Console.ReadKey().Key != ConsoleKey.Escape);
 
