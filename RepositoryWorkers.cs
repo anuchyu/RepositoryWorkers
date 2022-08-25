@@ -50,7 +50,6 @@ namespace RepositoryWorkers
                 Console.WriteLine("Неверная дата, попробуйте ещё раз");
                 date = Console.ReadLine();
             }
-
             workers.Add(new Worker(name, dateFromBorn));
             Console.WriteLine($"Добавление сотрудника с id = {workers.Count} прошло успешно");
         }
@@ -63,7 +62,7 @@ namespace RepositoryWorkers
 
             foreach (Worker worker in workers)
             {
-                if (worker.Count == id)
+                if (worker.ID == id)
                 {
                     workers.Remove(worker);
                     Console.WriteLine("Удаление прошло успешно");
@@ -78,7 +77,7 @@ namespace RepositoryWorkers
 
             foreach (Worker worker in workers)
             {
-                if (worker.Count == id)
+                if (worker.ID == id)
                     Console.WriteLine(worker);
             }
         }

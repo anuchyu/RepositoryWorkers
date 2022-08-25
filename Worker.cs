@@ -8,9 +8,8 @@ namespace RepositoryWorkers
 {
     public class Worker
     {
-        private int count;
-        private int age;
-        private string name = "";
+        private static int counter;
+        private string name;
         private DateTime birthDay; 
 
         public string Name { get; set; }  
@@ -24,30 +23,22 @@ namespace RepositoryWorkers
             set 
             {
                 if (value.Year < 2010 && value.Year > 1930)
-                birthDay = value;
+                {
+                    birthDay = value;
+                }
             }
         }
-        public int Age { get; }
-        public int Count { get; }
-        public Worker (int count, string name, DateTime birthDay)
+        public int ID { get; private set; }
+        public Worker (string name, DateTime birthDay)
         {
-            this.count = count++;
-            if (BirthDay.Month >= timeCreated.Month)
-            {
-                age = timeCreated.Year - BirthDay.Year;
-            }
-            else
-            {
-                age = timeCreated.Year - BirthDay.Year-1; 
-            }
-
+            ID = ++counter;
             Name = name;
             BirthDay = birthDay;
         }
 
         public override string ToString()
         {
-            return $"Id: {count} Name:{name} Birthday:{birthDay} Age:{age} DateCreate:{timeCreated}";
+            return $"Id: {ID} Name:{name} Birthday:{birthDay.ToShortTimeString} Age:{DateTime.Now.Year - birthDay.Year} DateCreate:{timeCreated}";
         }
     }
 }
