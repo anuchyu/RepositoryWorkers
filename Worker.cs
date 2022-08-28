@@ -1,19 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace RepositoryWorkers
+﻿namespace RepositoryWorkers
 {
     public class Worker
     {
         private static int counter;
-        private string name;
         private DateTime birthDay; 
 
         public string Name { get; set; }  
-        public DateTime timeCreated { get; } = DateTime.Now;
+        public DateTime TimeCreated { get; } = DateTime.Now;
         public DateTime BirthDay
         {
             get 
@@ -28,17 +21,18 @@ namespace RepositoryWorkers
                 }
             }
         }
-        public int ID { get; private set; }
+        public int Id { get; }
         public Worker (string name, DateTime birthDay)
         {
-            ID = ++counter;
+            Id = ++counter;
             Name = name;
             BirthDay = birthDay;
         }
 
         public override string ToString()
         {
-            return $"Id: {ID} Name:{name} Birthday:{birthDay.ToShortTimeString} Age:{DateTime.Now.Year - birthDay.Year} DateCreate:{timeCreated}";
+            return $"Id: {Id} Name:{Name} Birthday:{birthDay.ToShortTimeString} Age:{DateTime.Now.Year - birthDay.Year} " +
+                $"DateCreate:{TimeCreated}";
         }
     }
 }
