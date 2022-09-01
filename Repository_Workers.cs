@@ -1,6 +1,6 @@
 ﻿namespace RepositoryWorkers
 {
-    public static class RepositoryWorkers
+    public static class Repository_Workers
     {
         public static List<Worker> workers = new();
 

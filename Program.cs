@@ -1,4 +1,5 @@
 ﻿using System.Globalization;
+using RepositoryWorkers;
 
 do
     {
@@ -9,25 +10,25 @@ do
         switch (number)
         {
             case "1":
-            RepositoryWorkers.RepositoryWorkers.ShowAllWorkers();
+            Repository_Workers.ShowAllWorkers();
                 break;
 
             case "2":
-                RepositoryWorkers.RepositoryWorkers.GetWorkerById(WorkerId());
+            Repository_Workers.GetWorkerById(WorkerId());
                 break;
 
             case "3":
-                RepositoryWorkers.RepositoryWorkers.DeleteWorkerById(WorkerId());
+            Repository_Workers.DeleteWorkerById(WorkerId());
                 break;
 
             case "4":
             var newWorker = NewWorker();
-                RepositoryWorkers.RepositoryWorkers.AddWorker(newWorker.Item1, newWorker.Item2);
+            Repository_Workers.AddWorker(newWorker.name, newWorker.dateFromBorn);
                 break;
 
             case "5":
             var dateFromDateTo = DateFromDateTo();
-            RepositoryWorkers.RepositoryWorkers.GetWorkersBetweenTwoDates(dateFromDateTo.dateFrom, dateFromDateTo.dateTo);
+            Repository_Workers.GetWorkersBetweenTwoDates(dateFromDateTo.dateFrom, dateFromDateTo.dateTo);
                 break;
 
             default:
@@ -49,14 +50,14 @@ int WorkerId()
         }
     return id;
     }
-(string, DateTime) NewWorker ()
+(string name, DateTime dateFromBorn) NewWorker ()
     {
         Console.WriteLine("Введите имя работника");
         string name= Console.ReadLine();
         Console.WriteLine("Введите дату рождения работника");
         string  date= Console.ReadLine();
         DateTime dateFromBorn;
-        while (!DateTime.TryParseExact(date, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out dateFromBorn))
+        while (!DateTime.TryParseExact(date, "dd/MM/yyyy", null, DateTimeStyles.None, out dateFromBorn))
         {
             Console.WriteLine("Неверная дата, попробуйте ещё раз");
             date = Console.ReadLine();
