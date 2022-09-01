@@ -31,7 +31,7 @@
 
         public override string ToString()
         {
-            return $"Id: {Id} Name:{Name} Birthday:{birthDay.ToShortTimeString} Age:{DateTime.Now.Year - birthDay.Year} " +
+            return $"Id: {Id} Name:{Name} Birthday:{BirthDay} Age:{DateTime.Now.Year - birthDay.Year} " +
                 $"DateCreate:{TimeCreated}";
         }
     }
