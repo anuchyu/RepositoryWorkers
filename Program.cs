@@ -1,7 +1,5 @@
-﻿using RepositoryWorkers;
-using System.Globalization;
+﻿using System.Globalization;
 
-RepositoryWorkers.RepositoryWorkers repository = new ();
 do
     {
         Console.WriteLine("Что будем делать? Введите цифру на экран\n1.Выведем на экран\n2.Выведем на экран сотрудника по ID\n" +
@@ -11,25 +9,25 @@ do
         switch (number)
         {
             case "1":
-                repository.ShowAllWorkers();
+            RepositoryWorkers.RepositoryWorkers.ShowAllWorkers();
                 break;
 
             case "2":
-                repository.GetWorkerById(WorkerId());
+                RepositoryWorkers.RepositoryWorkers.GetWorkerById(WorkerId());
                 break;
 
             case "3":
-                repository.DeleteWorkerById(WorkerId());
+                RepositoryWorkers.RepositoryWorkers.DeleteWorkerById(WorkerId());
                 break;
 
             case "4":
             var newWorker = NewWorker();
-                repository.AddWorker(newWorker.Item1, newWorker.Item2);
+                RepositoryWorkers.RepositoryWorkers.AddWorker(newWorker.Item1, newWorker.Item2);
                 break;
 
             case "5":
             var dateFromDateTo = DateFromDateTo();
-            repository.GetWorkersBetweenTwoDates(dateFromDateTo.Item1, dateFromDateTo.Item2);
+            RepositoryWorkers.RepositoryWorkers.GetWorkersBetweenTwoDates(dateFromDateTo.dateFrom, dateFromDateTo.dateTo);
                 break;
 
             default:
@@ -65,7 +63,7 @@ int WorkerId()
         }
         return (name,dateFromBorn);
     }
-(DateTime, DateTime) DateFromDateTo()
+(DateTime dateFrom, DateTime dateTo) DateFromDateTo()
     {
         Console.WriteLine("Введите дату с которой будем вести отсчет");
         string date = Console.ReadLine();
