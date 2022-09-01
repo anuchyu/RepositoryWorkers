@@ -49,7 +49,7 @@ int WorkerId()
             Console.WriteLine("неверное число");
             checkId = Console.ReadLine();
         }
-        return id-1;
+    return id;
     }
 (string, DateTime) NewWorker ()
     {

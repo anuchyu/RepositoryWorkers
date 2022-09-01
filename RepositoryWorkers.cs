@@ -11,13 +11,13 @@
 
         public void GetWorkerById(int id)
         {
-            var worker = workers[id];
+            var worker = workers.FirstOrDefault(w => w.Id == id);
             Console.WriteLine(worker);
         }
 
         public void DeleteWorkerById(int id)
         {
-            var worker = workers[id];
+            var worker = workers.FirstOrDefault(w => w.Id == id);
             workers.Remove(worker);
             Console.WriteLine("Удаление прошло успешно");
         }
